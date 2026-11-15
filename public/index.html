@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="uk">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Деталізація створених рецептів</title>
+    <meta name="description" content="Електронний рецепт на лікарські засоби: деталізація створених рецептів" />
+    <meta name="robots" content="index, follow" />
+    <meta property="og:title" content="Деталізація створених рецептів" />
+    <meta property="og:description" content="Електронний рецепт на лікарські засоби: деталізація створених рецептів" />
+    <meta property="og:type" content="website" />
+    <link rel="icon" href="/assets/img/logos/logo.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="/styles.css" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.9/dist/chart.umd.min.js" defer></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.2.0/dist/chartjs-plugin-datalabels.min.js"
+      defer
+    ></script>
+    <script src="https://cdn.jsdelivr.net/npm/exceljs@4.4.0/dist/exceljs.min.js" defer></script>
+    <script src="/recipes.js" defer></script>
+  </head>
+  <body>
+    <div class="wrapper">
+      <main class="main">
+        <div class="main__container">
+          <section>
+            <h2>Деталізація створених рецептів</h2>
+            <div class="settings">
+              <div class="settings__wrap settings__wrap--area">
+                <label for="recipe-provider">Надавач послуг</label>
+                <textarea
+                  id="recipe-provider"
+                  class="suggest-area"
+                  rows="1"
+                  placeholder="Код ЄДРПОУ або назва закладу"
+                ></textarea>
+                <ul id="provider-suggestions" class="suggest-list" aria-label="Підказки надавачів послуг"></ul>
+              </div>
+              <div class="settings__wrap">
+                <label for="recipe-year">Рік</label>
+                <input id="recipe-year" type="number" class="recipe-year" />
+              </div>
+              <div class="settings__wrap settings__wrap--wider">
+                <label for="extra-drug">Додатковий МНН</label>
+                <input
+                  id="extra-drug"
+                  type="text"
+                  maxlength="400"
+                  placeholder="Введи МНН як у звіті НСЗУ"
+                  list="extra-drug-suggestions"
+                />
+                <datalist id="extra-drug-suggestions"></datalist>
+              </div>
+            </div>
+            <div class="settings-btns">
+              <button class="defaultButton" id="load-recipes" type="button">Показати статистику</button>
+              <button class="defaultButton" id="add-extra-drug" type="button">Додати препарат</button>
+              <button class="defaultButton" id="download-recipes" type="button" disabled>Скачати таблицю</button>
+              <button class="defaultButton" id="theme-toggle" type="button">Змінити тему</button>
+            </div>
+            <div class="extra-meds">
+              <p id="extra-drug-status" role="status"></p>
+              <ul id="extra-drug-list"></ul>
+            </div>
+            <p class="query-info" id="status" role="status"></p>
+            <figure>
+              <table>
+                <thead>
+                  <tr id="pharmacy-heading">
+                    <th scope="col">
+                      <span class="table-text">МНН / МІСЯЦІ</span>
+                    </th>
+                    <th scope="col">
+                      <span class="table-text">1 Січ</span>
+                    </th>
+                    <th scope="col">
+                      <span class="table-text">2 Лют</span>
+                    </th>
+                    <th scope="col">
+                      <span class="table-text">3 Бер</span>
+                    </th>
+                    <th scope="col">
+                      <span class="table-text">4 Кві</span>
+                    </th>
+                    <th scope="col">
+                      <span class="table-text">5 Тра</span>
+                    </th>
+                    <th scope="col">
+                      <span class="table-text">6 Чер</span>
+                    </th>
+                    <th scope="col">
+                      <span class="table-text">7 Лип</span>
+                    </th>
+                    <th scope="col">
+                      <span class="table-text">8 Сер</span>
+                    </th>
+                    <th scope="col">
+                      <span class="table-text">9 Вер</span>
+                    </th>
+                    <th scope="col">
+                      <span class="table-text">10 Жов</span>
+                    </th>
+                    <th scope="col">
+                      <span class="table-text">11 Лис</span>
+                    </th>
+                    <th scope="col">
+                      <span class="table-text">12 Гру</span>
+                    </th>
+                  </tr>
+                </thead>
+                <tbody id="recipe-rows"></tbody>
+              </table>
+            </figure>
+            <div id="recipe-chart-section" hidden>
+              <h3>Виписані рецепти за місяцями</h3>
+              <canvas id="recipe-chart"></canvas>
+            </div>
+          </section>
+        </div>
+      </main>
+      <footer class="footer">
+        <div class="footer__container">
+          <p class="footer__copyright">© Copyright Деталізація створених рецептів. Всі права збережено.</p>
+        </div>
+      </footer>
+      <div id="go-top-elem" class="go-top shown">
+        <button class="go-top__button" aria-label="scroll up">
+          <div class="go-upper-floor__img arrow-go-upper-floor">
+            <div class="arrow-go-upper-floor__stick"></div>
+          </div>
+        </button>
+      </div>
+    </div>
+    <script src="./script.js"></script>
+  </body>
+</html>
