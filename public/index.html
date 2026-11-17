@@ -24,7 +24,7 @@
       <main class="main">
         <div class="main__container">
           <section>
-            <h2>Деталізація створених рецептів</h2>
+            <h2 class="main-title">Деталізація створених рецептів</h2>
             <div class="settings">
               <div class="settings__wrap settings__wrap--area">
                 <label for="recipe-provider">Надавач послуг</label>
@@ -56,7 +56,11 @@
               <button class="defaultButton" id="load-recipes" type="button">Показати статистику</button>
               <button class="defaultButton" id="add-extra-drug" type="button">Додати препарат</button>
               <button class="defaultButton" id="download-recipes" type="button" disabled>Скачати таблицю</button>
-              <button class="defaultButton" id="theme-toggle" type="button">Змінити тему</button>
+              <button class="defaultButton defaultButton--theme-btn" id="theme-toggle" type="button">
+                <div class="icon_sun"></div>
+                <span>/</span>
+                <div class="icon_IcoMoon"></div>
+              </button>
             </div>
             <div class="extra-meds">
               <p id="extra-drug-status" role="status"></p>
